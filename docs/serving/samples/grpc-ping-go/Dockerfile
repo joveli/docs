@@ -32,7 +32,7 @@ RUN CGO_ENABLED=0 go build -tags=grpcping -o ./ping-client ./client
 # Use a Docker multi-stage build to create a lean production image.
 # https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
 # https://github.com/GoogleContainerTools/distroless#readme
-FROM gcr.io/distroless/static
+FROM gcr.io/distroless/base
 
 # Copy the binaries to the production image from the builder stage.
 COPY --from=builder /go/src/github.com/knative/docs/docs/serving/samples/grpc-ping-go/ping-server /server
